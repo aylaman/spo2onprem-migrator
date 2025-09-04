@@ -48,7 +48,7 @@ Use PowerShell 5.1
     -LibraryName "Documents" `
     -OutputFolder "C:\Migration
 
-Step 2: Import to SharePoint On-Prem
+Step 3: Import to SharePoint On-Prem
 Use PowerShell 5.1 with SharePointPnPPowerShell2019 module
 .\Import-SPOnPremFilesWithMetadata.ps1 `
     -SiteUrl "http://your-onprem-server/sites/TargetSite" `
