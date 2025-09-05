@@ -40,6 +40,7 @@ Use PowerShell 7+ with pnp module
     -LibraryName "DocumentsSM" `
     -OutputFolder "D:\Migration\Export" `
     -IncludeCustomColumns $true
+  * Update ClientId based on your tenant ID
     
 Step 2: (Optional but Recommended)) Creating custom columns in target document library
 Use PowerShell 5.1
@@ -47,7 +48,8 @@ Use PowerShell 5.1
     -SiteUrl "https://yourtenant.sharepoint.com/sites/YourSite" `
     -LibraryName "Documents" `
     -LocalPath "D:\Migration"
-
+* Update CustomColumns based on your needs
+  
 Step 3: Import to SharePoint On-Prem
 Use PowerShell 5.1 with SharePointPnPPowerShell2019 module
 .\Import-SPOnPremFilesWithMetadata.ps1 `
