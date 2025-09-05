@@ -1,5 +1,5 @@
 # spo2onprem-migrator
-A collection of PowerShell scripts to export files and metadata with custom columns from SharePoint Online and import them into SharePoint on-premises.
+A collection of PowerShell scripts to export files and metadata with custom columns from SharePoint Online and import them into SharePoint2019 on-premises.
 
 ## Features
 
@@ -18,7 +18,7 @@ A collection of PowerShell scripts to export files and metadata with custom colu
   Install-Module -Name "PnP.PowerShell"
 - The user running the script must have Contribute or higher permissions on the library
 
-### For Importing to SharePoint On-premises
+### For Importing to SharePoint2019 On-premises
 - Windows PowerShell 5.1 (PnP PowerShell 2019 is not compatible with PowerShell Core / 7+)
 - SharePointPnPPowerShell2019 module
   Install with:
@@ -29,7 +29,7 @@ A collection of PowerShell scripts to export files and metadata with custom colu
 ### Script Overview
 Script	Description
 Export-SPOFilesWithMetadata.ps1	Exports files and metadata from a SharePoint Online document library
-Import-SPOnPremFilesWithMetadata.ps1	Imports the exported files and metadata into a SharePoint On-Prem library
+Import-SPOnPremFilesWithMetadata.ps1	Imports the exported files and metadata into a SharePoint2019 On-Prem library
 CreateCustomColumn.ps1	(Optional but Recommended)) Creating custom columns in target document library
 
 ### How to Use
@@ -37,8 +37,8 @@ Step 1: Export from SharePoint Online
 Use PowerShell 7+ with pnp module
 .\Export-SPOFilesWithMetadata.ps1 `
     -SiteUrl "https://yourtenant.sharepoint.com/sites/YourSite" `
-    -LibraryName "Documents" `
-    -OutputFolder "C:\Migration\Export" `
+    -LibraryName "DocumentsSM" `
+    -OutputFolder "D:\Migration\Export" `
     -IncludeCustomColumns $true
     
 Step 2: (Optional but Recommended)) Creating custom columns in target document library
@@ -46,14 +46,15 @@ Use PowerShell 5.1
 .\CreateCustomColumn.ps1 `
     -SiteUrl "https://yourtenant.sharepoint.com/sites/YourSite" `
     -LibraryName "Documents" `
-    -OutputFolder "C:\Migration
+    -LocalPath "D:\Migration"
 
 Step 3: Import to SharePoint On-Prem
 Use PowerShell 5.1 with SharePointPnPPowerShell2019 module
 .\Import-SPOnPremFilesWithMetadata.ps1 `
     -SiteUrl "http://your-onprem-server/sites/TargetSite" `
     -LibraryName "Documents" `
-    -InputFolder "C:\Migration\Export" `
+    -LocalPath "D:\Migration\Export" `
+    -LogPath "D:\MigrationLogs_Document"
     -PreserveMetadata $true
 
 ### FAQ
